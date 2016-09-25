@@ -13,6 +13,7 @@ import com.example.android.habittracker.data.HabitDbHelper;
 public class MainActivity extends AppCompatActivity {
 
     private HabitDbHelper mDbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         String[] projection = {
                 HabitEntry.COLUMN_HABIT_NAME,
-                HabitEntry.COLUMN_HABIT_HOURS };
+                HabitEntry.COLUMN_HABIT_HOURS};
 
         Cursor cursor = db.query(HabitEntry.TABLE_NAME,
                 projection,
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         int habitHoursIndex = cursor.getColumnIndex(HabitEntry.COLUMN_HABIT_HOURS);
         while (cursor.moveToNext()) {
             result.append(cursor.getString(habitNameIndex) + " - "
-                            + cursor.getInt(habitHoursIndex) + "\n");
+                    + cursor.getInt(habitHoursIndex) + "\n");
         }
         TextView text = (TextView) findViewById(R.id.text_view);
         text.setText(result.toString());
